@@ -1,0 +1,139 @@
+@font-face {
+  font-family: 'Lato-Light';
+  src: url("../../assets/fonts/Lato-Light.ttf");
+}
+
+.card_body {
+  position: relative;
+  width: 30%;
+  height: 27vw;
+  border-radius: 1vw;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #F8F8F8;
+  margin-top: 3%;
+}
+
+.card_image {
+  width: 100%;
+  bottom: 0;
+  align-self: center;
+  position: absolute;
+}
+
+.card_image_2 {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  align-self: center;
+  position: absolute;
+}
+
+.image_container {
+  border-radius: 1vw 1vw 0 0;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.image_container_2 {
+  border-radius: 1vw 1vw 0 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.opacity_effect {
+  border-radius: 1vw 1vw 0 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(40deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 1;
+  position: absolute;
+}
+
+.pushkin_card {
+  position: absolute;
+  right: 0;
+  top: 5%;
+  width: 15%;
+  z-index: 2;
+}
+
+.card_info_container {
+  border-radius: 0 0 1vw 1vw;
+  height: 50%;
+  position: relative;
+
+  b {
+    font-family: Lato-Regular, sans-serif;
+    font-size: clamp(8px, 1.25vw, 36px);
+    align-self: flex-end;
+    margin-left: 7.5%;
+  }
+
+  p {
+    font-family: Lato-Light, sans-serif;
+    margin-top: 4%;
+    font-size: clamp(8px, 1vw, 36px);
+  }
+}
+
+.name_of_event {
+  flex-wrap: wrap;
+  display: flex;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  height: 37.5%;
+  p {
+    font-family: Lato-Regular, sans-serif;
+    margin-left: 7.5%;
+    margin-right: 1%;
+    font-size: clamp(8px, 1.57vw, 36px);
+  }
+}
+
+.date_container {
+  flex-wrap: wrap;
+  display: flex;
+  margin-left: 7.5%;
+  font-family: Lato-Light, sans-serif;
+  font-size: clamp(8px, 1vw, 36px);
+}
+
+.ticket_button {
+  margin-left: 7.5%;
+  border: 0.1vw solid #40b93c;
+  border-radius: 25px;
+  padding: 0.6vw 1.7vw;
+  color: #40b93c;
+  position: absolute;
+  bottom: 12.5%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #40b93c;
+    color: #F8F8F8;
+  }
+}
+
+.people {
+  width: 5%;
+  position: absolute;
+  top: 0;
+  right: 5%;
+}
+
+.more_text {
+  position: absolute;
+  left: 12.5%;
+  bottom: 5%;
+  display: block;
+  align-self: center;
+  color: white;
+  z-index: 3;
+}
