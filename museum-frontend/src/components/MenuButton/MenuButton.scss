@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Lato-SemiBold';
+  src: url("../../assets/fonts/Lato-SemiBold.ttf");
+}
+
+p {
+  font-family: "Lato-SemiBold", sans-serif;
+  font-size: clamp(8px, 1.25vw, 36px);
+}
+
+.underline {
+  background-color: black;
+  width: 1.5vw;
+  height: 2px;
+  border-radius: 100px;
+  align-self: center;
+  position: absolute; // Времянка
+  top: 80%; // Времянка
+  display: none;
+}
+
+.long_underline {
+  background-color: black;
+  width: 3vw;
+  height: 2px;
+  border-radius: 100px;
+  align-self: center;
+  position: absolute; // Времянка
+  top: 80%; // Времянка
+}
+
+p:hover + .underline {
+  display: block;
+  animation: ani 0.75s forwards;
+}
+
+
+@keyframes ani {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
