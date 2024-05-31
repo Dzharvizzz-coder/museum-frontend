@@ -15,28 +15,32 @@
 
 
 .header {
-  width: 100%;
   display: flex;
-  height: 20vh;
-  align-items: center;
+  gap: 85px;
   flex-direction: row;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 160px;
 }
 
 .header_menu {
   flex-direction: column;
-  width: 50%;
-  height: 9vw;
-  position: absolute;
-  margin-left: 25%;
+  width: 37.5%;
+  height: 94px;
   display: flex;
-  margin-top: 0.9%;
+  align-self: center;
+  padding-bottom: 15px;
 
   .text {
-    align-self: center;
-    margin: 0;
-    font-family: "Lato-Bold", sans-serif;
-    font-size: clamp(10px, 3.3vw, 65px);
     color: rgba(17, 17, 17, 0.5);
+    margin: 0;
+    font-family: Lato-Regular, sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    align-self: center;
+    padding-bottom: 12px;
   }
 
   .line {
@@ -46,6 +50,7 @@
     border-radius: 1px;
     padding: 1px;
     margin-top: 1%;
+    margin-bottom: 15px;
   }
 
   .button_container {
@@ -60,9 +65,10 @@
 }
 
 .logo {
-  height: 9vw;
-  margin-left: 5%;
-  max-height: 50%;
+  width: 170px;
+  height: 70px;
+  align-self: center;
+  margin-left: 18.3%;
 }
 
 .main_img {
@@ -76,26 +82,45 @@
 }
 
 .info {
-  width: 30%;
-  height: 50%;
+  width: 540px;
   position: absolute;
-  bottom: 30%;
+  bottom: 29%;
   left: 10%;
 
-  p {
-    font-family: Lato-SemiBold, sans-serif;
-    color: white;
-    font-size: clamp(8px, 1.5vw, 30px);
+  &__second_text {
+    color: rgba(255, 255, 255, 0.75);
+
+    font-family: Lato-Light, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 71px;
+  }
+
+  &__first_text {
+    color: rgba(255, 255, 255, 0.75);
+
+    font-family: Lato-Light, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 42px;
+    margin-bottom: 25px;
   }
 
   button {
     background: #1c387e;
     border: 1px solid #1c387e;
-    border-radius: 25px;
-    padding: 1.5vmin 5vmin;
+    border-radius: 15px;
     color: white;
     font-family: Lato-Regular, sans-serif;
     font-size: clamp(6px, 2vh, 16px);
+    display: inline-flex;
+    padding: 14px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 }
 
@@ -114,7 +139,7 @@
   flex-direction: row;
   margin-left: 10%;
   margin-right: 10%;
-  justify-content: space-between;
+  gap: 5%;
 }
 
 .drop_down_menu_container {
@@ -128,9 +153,13 @@
   padding-bottom: 2%;
 
   p {
-    font-family: Lato-SemiBold, sans-serif;
-    color: white;
-    font-size: clamp(8px, 1.57vw, 36px);
+    text-align: center;
+    font-family: Lato-Light, sans-serif;
+    color: var(--White-MIE, #F8F8F8);
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 
   }
 }

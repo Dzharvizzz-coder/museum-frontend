@@ -1,0 +1,36 @@
+.search_input_container {
+  width: 80%;
+  display: block;
+  margin: 2% auto 0;
+}
+
+.pagination {
+  display: block;
+  margin-top: 2%;
+  width: 100%;
+  text-align: center;
+  font-family: Lato-Regular, sans-serif;
+
+  span {
+    padding: 1vw;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  .active {
+    opacity: 1;
+  }
+}
+
+.filters-cont {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.filters-p {
+  margin-left: 10%;
+  font-size: 30px;
+}

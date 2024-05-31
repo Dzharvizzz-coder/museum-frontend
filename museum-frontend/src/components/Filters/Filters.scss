@@ -1,0 +1,72 @@
+.dropdown-container-main {
+  display: flex;
+  align-items: center;
+  width: 20.5%;
+  gap: 7.5%;
+  position: relative;
+}
+
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 150px;
+}
+
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 150px;
+  height: 30px;
+  padding: 11px 10px;
+  border-radius: 15px;
+  border: 1px solid #000;
+  background: #FFF;
+  cursor: pointer;
+  font-family: Lato-Light, sans-serif;
+}
+
+.selected-item {
+  margin-right: auto;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #000;
+  background: #FFF;
+  margin-top: 5px;
+  position: absolute;
+  top: 100%; /* позиционирует меню ниже кнопки */
+  right: auto; /* выравнивает меню по правой стороне */
+  z-index: 1000; /* гарантирует, что меню будет над другими элементами */
+  font-family: Lato-Light, sans-serif;
+}
+
+.dropdown-item {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-item-no-filers {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #1C387E;
+  color: #F8F8F8;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
