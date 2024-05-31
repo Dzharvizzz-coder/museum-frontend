@@ -17,7 +17,7 @@ body::-webkit-scrollbar-thumb {
 
 footer {
     margin-top: 4%;
-    background-color: #404040 !important;
+    background-color: black !important;
     border-radius: 2vh 2vh 0 0;
     height: auto;
     display: flex;

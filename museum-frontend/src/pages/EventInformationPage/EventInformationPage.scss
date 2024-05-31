@@ -1,0 +1,145 @@
+.photo_and_information_cont {
+  flex-direction: row;
+  justify-content: space-between;
+  display: inline-block;
+
+  &__photo {
+    width: 50%;
+    height: auto;
+    border-radius: 5%;
+    float: left;
+    margin-right: 30px;
+  }
+
+  &__information {
+    width: 48%;
+    flex-direction: column;
+    display: inline;
+  }
+}
+
+.name_of_event {
+  font-size: 36px;
+  margin: 0;
+  font-family: Lato-SemiBold, sans-serif;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.place_of_event {
+  font-size: 24px;
+  margin: 0;
+  font-family: Lato-SemiBold, sans-serif;
+  padding-bottom: 9%;
+}
+
+.name_of_event_information {
+  font-family: Lato-SemiBold, sans-serif;
+  font-size: 18px;
+}
+
+.name_of_event_people {
+  font-family: Lato-Regular, sans-serif;
+  font-size: 18px;
+  margin-top: 5%;
+}
+
+.ticket_buy_container {
+  width: 100%;
+
+  &__date {
+    justify-content: space-between;
+    border-top: 1px solid black;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+
+    &__day {
+      font-size: 48px;
+      margin: 0;
+      font-family: Lato-SemiBold, sans-serif;
+    }
+
+    &__button {
+      background-color: #1c387e;
+      color: white;
+      border: none;
+      width: 7.5%;
+      margin-right: 2.5%;
+      font-size: 16px;
+      font-family: Lato-Regular, sans-serif;
+      border-radius: 15px;
+      height: 5vh;
+      margin: 1.7%;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid black;
+    }
+
+    &:nth-child(6) {
+      border-bottom: 1px solid black;
+    }
+
+    &:nth-child(7) {
+      border-top: none;
+    }
+  }
+}
+
+.date_event_cont {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2.5%;
+  width: 100px;
+  align-items: center;
+
+  &__first {
+    flex-direction: column;
+    margin-left: 5px;
+
+    p {
+      margin: 0;
+
+      &:first-child {
+        color: #000;
+        font-family: Lato-Light, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 275;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+.dates {
+  color: #000;
+  font-family: Lato-Regular, sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.more_button {
+  display: flex;
+  width: 160px;
+  padding: 10px 7.5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+  border: 1px solid #1C387E;
+  color: #1C387E;
+
+  font-family: Lato-Regular, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 2% auto 0;
+
+  cursor: pointer;
+}

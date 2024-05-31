@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url("../../assets/fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'Lato-SemiBold';
+  src: url("../../assets/fonts/Lato-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url("../../assets/fonts/Lato-Regular.ttf");
+}
+
+
+.second_button_container {
+  align-self: center;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 39%;
+  margin-right: 39%;
+}
+
+.event_card_container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+.telegram_link {
+  position: absolute;
+  right: 10%;
+  top: 15%;
+  cursor: pointer;
+}
+
+.vk_link {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  cursor: pointer;
+}
+
+.floor_style{
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+.floor_image_cont {
+
+}
+
+.floor_cont {
+  position: relative;
+}

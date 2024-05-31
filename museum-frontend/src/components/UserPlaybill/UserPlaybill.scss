@@ -1,25 +1,32 @@
 .playbill_body {
   margin: 0 auto;
-  background: rgba(64, 185, 60, 0.2);
-  border: 2px solid #2d832a;
-  border-radius: 25px;
+  border-radius: 15px;
+  background: #FFF;
   text-align: center;
   flex-direction: column;
   margin-top: 3%;
   padding-left: 15%;
   padding-right: 15%;
   padding-bottom: 1%;
+  padding-top: 1%;
 
   p {
-    margin: 1.5%;
+    color: #111;
+    text-align: center;
+    font-family: Lato-SemiBold, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0.5%;
   }
 
 
   button {
-    margin-top: 2.5%;
+    margin-top: 20px;
     background: #1c387e;
     border: 1px solid #1c387e;
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 1.5vh 5vh;
     color: white;
     font-family: Lato-Regular, sans-serif;
@@ -50,7 +57,7 @@
       color: white;
     }
 
-    &:focus {
+    &.active {
       background-color: #2d832a;
       color: white;
       border: 0.1vmin solid #2d832a;

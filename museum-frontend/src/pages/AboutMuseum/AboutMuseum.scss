@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url("../../assets/fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'Lato-SemiBold';
+  src: url("../../assets/fonts/Lato-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url("../../assets/fonts/Lato-Regular.ttf");
+}
+
+.telegram_link {
+  position: absolute;
+  right: 10%;
+  top: 15%;
+  cursor: pointer;
+}
+
+.vk_link {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  cursor: pointer;
+}
+
+.content_container_about {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 7.5%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__text {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.25%;
+    align-self: center;
+
+    p {
+      color: #000;
+
+      font-family: Lato-Light, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    h1 {
+      color: #000;
+
+      font-family: Lato-Bold, sans-serif;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin: 0;
+    }
+  }
+}
+
+.photo-container {
+  width: 70%;
+}
+
+.over-cont {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  width: 70%;
+  height: 30%;
+}
+
+.over-cont:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.over-cont:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+
+.content_container {
+  display: flex;
+  width: 80%;
+  height: auto;
+  margin-left: 10%;
+  margin-top: 2%;
+  flex-direction: column;
+  gap: 5%;
+}
