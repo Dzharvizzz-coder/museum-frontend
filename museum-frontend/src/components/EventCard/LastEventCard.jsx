@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './EventCard.scss';
-import MuseumImage from '../../assets/images/TempImages/MuseumImage.png'
+import MuseumImage from '../../assets/images/MainImages/MuseumImage.png'
 
 export default function LastEventCard() {
     return (
