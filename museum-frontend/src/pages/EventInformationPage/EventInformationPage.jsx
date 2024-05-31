@@ -18,7 +18,7 @@ function EventInformationPage() {
     useEffect(() => {
         const fetchEventData = async () => {
             try {
-                const response = await fetch(`http://158.160.117.146:5000/api/v1/event/${eventId}`);
+                const response = await fetch(`http://музеум.рф/api/v1/event/${eventId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

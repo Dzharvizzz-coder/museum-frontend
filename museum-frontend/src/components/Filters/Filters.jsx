@@ -20,7 +20,7 @@ const Filters = ({ name, items, onFilterChange }) => {
             <p>{name}</p>
             <div className="dropdown-container">
                 <button className="dropdown-button" onClick={toggleMenu}>
-                    {selectedItem ? <span className="selected-item">{items[selectedItem]}</span> : 'Выберите'}
+                    {selectedItem ? <span className="selected-item">{items[selectedItem]}</span> : ''}
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
                         <path d="M1 1L8.5 9L16 1" stroke="black" />
                     </svg>

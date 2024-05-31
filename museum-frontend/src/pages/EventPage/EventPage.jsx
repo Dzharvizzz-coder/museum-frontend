@@ -38,7 +38,7 @@ function EventPage() {
         const fetchEvents = async (page = 1, allEvents = []) => {
             try {
                 const query = buildQuery(filters);
-                const response = await fetch(`http://158.160.117.146:5000/api/v1/event/search/?${query}`);
+                const response = await fetch(`http://музеум.рф/api/v1/event/search/?${query}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
