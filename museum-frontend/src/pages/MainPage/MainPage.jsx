@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Logo from '../../assets/images/MainImages/logo.svg';
 import BackgroundImage from '../../assets/images/MainImages/MainImage.png';
 import './MainPage.scss';
@@ -115,7 +115,7 @@ function MainPage() {
                 <div className={'info'}>
                     <p className={"info__first_text"}>Место, где можно узнать много интересного о городе и его истории.</p>
                     <p className={"info__second_text"}>В музее есть постоянные и временные экспозиции, а также проводятся мероприятия для детей и взрослых: концерты, фестивали, спектакли и мастер-классы</p>
-                    <button style={{ cursor: 'pointer' }}>Билеты</button>
+                    <button style={{ cursor: 'pointer' }} onClick={() => navigate('/events')}>Билеты</button>
                 </div>
             </div>
 
