@@ -26,7 +26,7 @@ function MainPage() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch('http://музеум.рф/api/v1/event/upcoming/?quantity=5');
+                const response = await fetch('http://музеум.рф/api/api/v1/event/upcoming/?quantity=5');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -53,7 +53,7 @@ function MainPage() {
             interests.forEach(interest => queryParams.append('tags', interest));
             eventTypes.forEach(eventType => queryParams.append('genre', eventType));
 
-            const url = `http://музеум.рф/api/v1/event/search_individual/?page=1&limit=20&${queryParams.toString()}`;
+            const url = `http://музеум.рф/api/api/v1/event/search_individual/?page=1&limit=20&${queryParams.toString()}`;
 
             const response = await fetch(url);
             if (!response.ok) {
