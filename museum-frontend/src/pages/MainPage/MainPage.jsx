@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from '../../assets/images/MainImages/logo.svg';
 import BackgroundImage from '../../assets/images/MainImages/MainImage.png';
 import './MainPage.scss';
@@ -12,6 +12,7 @@ import SearchInput from "../../components/SearchInput/SearchInput.jsx";
 import SendMail from '../../assets/images/MainImages/sendMail.png';
 import VkImage from '../../assets/images/MainImages/vkImage.png';
 import TelegramImage from '../../assets/images/MainImages/telegramImage.png';
+import Loader from "../../components/Loader/Loader.tsx";
 
 function MainPage() {
     const [events, setEvents] = useState([]);
@@ -22,6 +23,11 @@ function MainPage() {
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
     const navigate = useNavigate();
+    const [openMenuIndex, setOpenMenuIndex] = useState(null);
+
+    const toggleMenu = (index) => {
+        setOpenMenuIndex(openMenuIndex === index ? null : index);
+    };
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -67,12 +73,10 @@ function MainPage() {
     };
 
     const helpQuestions = [
-        { name: "Как добраться?" },
-        { name: "Как вести себя в музее?" },
-        { name: "Как получить помощь?" },
-        { name: "Как пользоваться приложением?" },
-        { name: "Где расположены пандусы?" },
-        { name: "Навигация" },
+        { name: "Как добраться?", storyComponent: "FirstStory" },
+        { name: "Что делать при входе?", storyComponent: "SecondStory" },
+        { name: "Как вести себя на первом этаже?", storyComponent: "ThirdStory" },
+        { name: "Как вести себя на втором этаже?", storyComponent: "FourStory" },
     ];
 
     const fields = [
@@ -86,10 +90,6 @@ function MainPage() {
         { label: 'Мероприятия', currentPage: currentPageIndex === 0 },
         { label: 'Моя афиша', currentPage: currentPageIndex === 1 },
     ];
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -126,7 +126,9 @@ function MainPage() {
             </div>
 
             <div className={'event_card_container'}>
-                {showRecomendations ? (
+                {loading ? (
+                    <Loader />
+                ) : showRecomendations ? (
                     <>
                         {events.map((event, i) => (
                             <EventCard
@@ -146,28 +148,26 @@ function MainPage() {
                         <LastEventCard />
                     </>
                 ) : (
-
-                    (!showMyPlaybill ? (
-                            <UserPlaybill onCloseMyPlaybill={() => setShowMyPlaybill(true)} onApplyFilters={handleApplyFilters}/>
-                        ) : (
-                            <>
-                                {filteredEvents.map((event, i) => (
-                                    <EventCard
-                                        key={event.event_id}
-                                        eventId={event.event_id}
-                                        disabilities={event.disabilities}
-                                        price={event.ticket_price && event.ticket_price.length > 0 ? event.ticket_price[0].price : 'Бесплатно'}
-                                        name={event.name}
-                                        date={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleDateString() : 'Не указано'}
-                                        time={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Не указано'}
-                                        place={event.event_location && event.event_location.length > 0 ? event.event_location[0].area.name : 'Не указано'}
-                                        cardImage={event.file && event.file.length > 0 ? event.file[0].s3_path : ''}
-                                        needPrice={event.ticket_price && event.ticket_price.length > 0}
-                                        fixedPrice={event.ticket_price && event.ticket_price.length > 0 && event.ticket_price[0].price_type === 'fixed'}
-                                    />
-                                ))}
-                            </>
-                        )
+                    !showMyPlaybill ? (
+                        <UserPlaybill onCloseMyPlaybill={() => setShowMyPlaybill(true)} onApplyFilters={handleApplyFilters} />
+                    ) : (
+                        <>
+                            {filteredEvents.map((event, i) => (
+                                <EventCard
+                                    key={event.event_id}
+                                    eventId={event.event_id}
+                                    disabilities={event.disabilities}
+                                    price={event.ticket_price && event.ticket_price.length > 0 ? event.ticket_price[0].price : 'Бесплатно'}
+                                    name={event.name}
+                                    date={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleDateString() : 'Не указано'}
+                                    time={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Не указано'}
+                                    place={event.event_location && event.event_location.length > 0 ? event.event_location[0].area.name : 'Не указано'}
+                                    cardImage={event.file && event.file.length > 0 ? event.file[0].s3_path : ''}
+                                    needPrice={event.ticket_price && event.ticket_price.length > 0}
+                                    fixedPrice={event.ticket_price && event.ticket_price.length > 0 && event.ticket_price[0].price_type === 'fixed'}
+                                />
+                            ))}
+                        </>
                     )
                 )}
             </div>
@@ -175,7 +175,15 @@ function MainPage() {
             <div className={"drop_down_menu_container"}>
                 <p>Как подготовиться к походу в музей</p>
                 {helpQuestions.map((field, i) => (
-                    <DropDownMenu key={i} name={field.name} />
+                    <DropDownMenu
+                        key={i}
+                        name={field.name}
+                        storyComponentName={field.storyComponent}
+                        isOpen={openMenuIndex === i}
+                        toggleMenu={() => toggleMenu(i)}
+                        isNextHidden={openMenuIndex === i - 1}
+                        isLastItem={i === helpQuestions.length - 1}
+                    />
                 ))}
             </div>
 
