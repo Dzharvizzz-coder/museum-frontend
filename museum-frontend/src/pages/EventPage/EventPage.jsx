@@ -9,6 +9,7 @@ import TelegramImage from '../../assets/images/MainImages/telegramImage.png';
 import { useNavigate } from "react-router-dom";
 import EventCard from "../../components/EventCard/EventCard.jsx";
 import Filters from "../../components/Filters/Filters.jsx";
+import Loader from "../../components/Loader/Loader.tsx";
 
 function EventPage() {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ function EventPage() {
     const eventsPerPage = 12;
 
     const buildQuery = (filters) => {
-        const query = new URLSearchParams({ page: 1, limit: 10 });
+        const query = new URLSearchParams({ limit: 1000 });
         for (const key in filters) {
             if (filters[key]) {
                 query.append(key, filters[key]);
@@ -34,30 +35,30 @@ function EventPage() {
         return query.toString();
     };
 
-    useEffect(() => {
-        const fetchEvents = async (page = 1, allEvents = []) => {
-            try {
-                const query = buildQuery(filters);
-                const response = await fetch(`http://музеум.рф/api/api/v1/event/search/?${query}`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                const updatedEvents = [...allEvents, ...data.content];
-                if (data.pages_total > page) {
-                    return fetchEvents(page + 1, updatedEvents);
-                } else {
-                    setEvents(updatedEvents);
-                    setLoading(false);
-                }
-            } catch (error) {
-                setError(error);
-                setLoading(false);
+    const fetchEvents = async (filters) => {
+        setLoading(true);
+        try {
+            const query = buildQuery(filters);
+            const response = await fetch(`http://музеум.рф/api/api/v1/event/search/?${query}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        };
+            const data = await response.json();
+            setEvents(data.content);
+            setLoading(false);
+        } catch (error) {
+            setError(error);
+            setLoading(false);
+        }
+    };
 
-        fetchEvents();
-    }, [filters]);
+    useEffect(() => {
+        fetchEvents(filters);
+    }, []); // Only run once on mount
+
+    useEffect(() => {
+        fetchEvents(filters);
+    }, [filters]); // Run whenever filters change
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -68,7 +69,7 @@ function EventPage() {
             ...prevFilters,
             [filterName]: filterValue
         }));
-        setCurrentPage(1); // Reset to first page when filters change
+        setCurrentPage(1);
     };
 
     const fields = [
@@ -129,10 +130,6 @@ function EventPage() {
     const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
     const pageNumbers = Array.from({ length: Math.ceil(events.length / eventsPerPage) }, (_, i) => i + 1);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     if (error) {
         return <div>Error: {error.message}</div>;
     }
@@ -159,30 +156,45 @@ function EventPage() {
                 <Filters name={"Инклюзивность"} items={{ "yes": "Да", "no": "Нет"}} onFilterChange={value => handleFilterChange('disabilities', value)} />
             </div>
             <div className={'event_card_container'}>
-                {currentEvents.map((event, i) => (
-                    <EventCard
-                        key={i}
-                        eventId={event.event_id}
-                        disabilities={event.disabilities}
-                        price={event.ticket_price && event.ticket_price.length > 0 ? event.ticket_price[0].price : 'Бесплатно'}
-                        name={event.name}
-                        date={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleDateString() : 'Не указано'}
-                        time={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Не указано'}
-                        place={event.event_location && event.event_location.length > 0 ? event.event_location[0].area.name : 'Не указано'}
-                        cardImage={event.file && event.file.length > 0 ? event.file[0].s3_path : ''}
-                        needPrice={event.ticket_price && event.ticket_price.length > 0}
-                        fixedPrice={event.ticket_price && event.ticket_price.length > 0 && event.ticket_price[0].price_type === 'fixed'}
-                    />
-                ))}
+                {loading ? (
+                    <Loader />
+                ) : (
+                    currentEvents.map((event, i) => (
+                        <EventCard
+                            key={i}
+                            eventId={event.event_id}
+                            disabilities={event.disabilities}
+                            price={event.ticket_price && event.ticket_price.length > 0 ? event.ticket_price[0].price : 'Бесплатно'}
+                            name={event.name}
+                            date={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleDateString() : 'Не указано'}
+                            time={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Не указано'}
+                            place={event.event_location && event.event_location.length > 0 ? event.event_location[0].area.name : 'Не указано'}
+                            cardImage={event.file && event.file.length > 0 ? event.file[0].s3_path : ''}
+                            needPrice={event.ticket_price && event.ticket_price.length > 0}
+                            fixedPrice={event.ticket_price && event.ticket_price.length > 0 && event.ticket_price[0].price_type === 'fixed'}
+                        />
+                    ))
+                )}
             </div>
 
-            <div className={'pagination'}>
+            {loading ? (
+                <></>
+            ) : (
+
+
+                <div className={'pagination'}>
                 {pageNumbers.map(number => (
                     <span key={number}
                           className={currentPage === number ? 'active' : ''}
                           onClick={() => handlePageChange(number)}>{number}</span>
                 ))}
             </div>
+
+            )}
+
+            {loading ? (
+                <></>
+            ) : (
 
             <footer>
                 <SearchInput image={SendMail} width={"13vw"} placeholder={"Ваш E-mail"}/>
@@ -197,6 +209,8 @@ function EventPage() {
                     <img src={VkImage} alt={"VK"} />
                 </a>
             </footer>
+
+            )}
         </div>
     );
 }

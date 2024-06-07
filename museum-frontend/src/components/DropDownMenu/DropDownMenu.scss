@@ -1,17 +1,13 @@
 .drop_down_menu {
   border-top: 1px solid rgba(248, 248, 248, 0.50);
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &:last-child {
-    border-bottom: 1px solid rgba(248, 248, 248, 0.50);
-  }
+  cursor: pointer;
 
   p {
     color: rgba(248, 248, 248, 0.50);
-
     text-align: center;
     font-family: Lato-Light, sans-serif;
     font-size: 20px;
@@ -25,12 +21,56 @@
     border: none;
 
     &:focus {
+      outline: none;
+    }
+  }
+
+  &.hidden_top_border {
+    border-top: none;
+  }
+
+  &.rotate {
+    button {
       transition: all 0.3s ease-in-out;
       transform: rotate(-45deg);
     }
   }
 }
 
-.button_image {
-  width: 10vh;
+.body {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+
+  &:last-child {
+    border-bottom: 1px solid rgba(248, 248, 248, 0.50);
+  }
+}
+
+.menu_content {
+  background-color: #FFFFFF;
+  height: 0; /* initially set height to 0 */
+  border-radius: 0 0 30px 30px;
+  align-items: center;
+  overflow: hidden; /* hide overflow content */
+}
+
+.menu_content.active {
+  opacity: 1;
+  animation: slideDown 1s ease forwards; /* apply animation when active */
+}
+
+@keyframes slideDown {
+  from {
+    height: 0; /* start height from 0 */
+  }
+  to {
+    height: 640px; /* end height at 640px */
+  }
+}
+
+.menu_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
