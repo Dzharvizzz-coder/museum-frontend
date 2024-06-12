@@ -167,8 +167,8 @@ function EventPage() {
                             disabilities={event.disabilities}
                             price={event.ticket_price && event.ticket_price.length > 0 ? event.ticket_price[0].price : 'Бесплатно'}
                             name={event.name}
-                            date={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleDateString() : 'Не указано'}
-                            time={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Не указано'}
+                            date={event.ticket_date && event.ticket_date.length > 0 ? new Date(new Date(event.ticket_date[0].date).setHours(new Date(event.ticket_date[0].date).getHours() - 10)).toLocaleDateString() : 'Не указано'}
+                            time={event.ticket_date && event.ticket_date.length > 0 ? new Date(new Date(event.ticket_date[0].date).setHours(new Date(event.ticket_date[0].date).getHours() - 10)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Не указано'}
                             place={event.event_location && event.event_location.length > 0 ? event.event_location[0].area.name : 'Не указано'}
                             cardImage={event.file && event.file.length > 0 ? event.file[0].s3_path : ''}
                             needPrice={event.ticket_price && event.ticket_price.length > 0}
