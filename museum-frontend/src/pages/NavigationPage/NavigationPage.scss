@@ -31,31 +31,130 @@
   margin-right: 10%;
 }
 
-
-.telegram_link {
-  position: absolute;
-  right: 10%;
-  top: 15%;
-  cursor: pointer;
-}
-
-.vk_link {
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  cursor: pointer;
-}
-
-.floor_style{
-  width: 90%;
-  display: block;
-  margin: 0 auto;
-}
-
 .floor_image_cont {
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5%;
+  align-items: center;
 
+  p {
+    color: #000;
+    font-family: Lato-Light, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+
+  img {
+    width: 66%;
+  }
 }
 
-.floor_cont {
-  position: relative;
+.navigation_buttons_cont {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2%;
+  justify-content: space-between;
+  display: flex;
+
+  button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: var(--Dark-Blue-MIE, #1C387E);
+    color: white;
+    border: none;
+    font-family: Lato-SemiBold, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+.floor_change_button {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  border-radius: 15px;
+  border: 2px solid var(--Dark-Blue-MIE, #1C387E);
+  padding-left: 1%;
+  padding-right: 1%;
+
+  svg {
+    cursor: pointer;
+  }
+
+  p {
+    color: #1C387E;
+    font-family: Lato-Regular, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+    align-items: center;
+
+  }
+}
+
+.question_container {
+  width: 20%;
+  position: absolute;
+  height: auto;
+  right: 13%;
+  top: 28%;
+  border-radius: 15px;
+  border: 2px solid #1C387E;
+  background: #FFF;
+
+  p {
+    margin-left: 5%;
+    margin-top: 3%;
+    margin-right: 5%;
+    margin-bottom: 0;
+    color: #000;
+
+    font-family: Lato-Regular, sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.redirect_button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5%;
+  justify-content: flex-end;
+  padding-right: 5%;
+  padding-bottom: 3%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  p {
+    color: #40B93C;
+    font-family: Lato-Regular, sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+}
+
+.redirect_button:hover {
+  transform: translateX(7px);
 }

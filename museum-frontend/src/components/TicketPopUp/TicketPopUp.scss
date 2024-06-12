@@ -15,6 +15,7 @@
   border-radius: 15px;
   background: #FFF;
   margin: 7.5% auto 0;
+  position: relative;
 }
 
 .popup_info {
@@ -145,7 +146,6 @@
   border-radius: 15px;
   background: #1C387E;
   border: none;
-  margin-top: 30px;
   color: #FFF;
   text-align: center;
   font-family: Lato-Regular, sans-serif;
@@ -158,7 +158,16 @@
 
 .exit_button {
   position: absolute;
-  top:155px;
-  right: 415px;
   cursor: pointer;
+  right: 1%;
+  top: 1%;
+}
+
+.last_container {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }

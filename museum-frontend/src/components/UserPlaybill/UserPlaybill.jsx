@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './UserPlaybill.scss';
 
-export default function UserPlaybill({ onApplyFilters, onCloseMyPlaybill }) {
-    const [showFilters, setShowFilters] = useState(false);
-    const [showRecomendations, setShowRecomendations] = useState(false);
+export default function UserPlaybill({ onApplyFilters, onCloseMyPlaybill, showOnlyFilters }) {
+    const [showFilters, setShowFilters] = useState(showOnlyFilters || false);
     const [selectedInterests, setSelectedInterests] = useState([]);
     const [selectedEventTypes, setSelectedEventTypes] = useState([]);
 

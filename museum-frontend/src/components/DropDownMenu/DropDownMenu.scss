@@ -1,10 +1,16 @@
 .drop_down_menu {
   border-top: 1px solid rgba(248, 248, 248, 0.50);
+  border-bottom: 1px solid rgba(248, 248, 248, 0.50);
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  margin-bottom: -1px;
+
+  &:first-child {
+    border-top: 1px solid #c1c8d9;
+  }
 
   p {
     color: rgba(248, 248, 248, 0.50);
@@ -14,14 +20,48 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    transition: color 0.3s ease;
   }
 
   button {
     background: transparent;
     border: none;
+    transition: all 0.3s ease;
 
     &:focus {
       outline: none;
+    }
+
+    svg {
+      transition: fill 0.3s ease, stroke 0.3s ease;
+
+      rect, path {
+        transition: fill 0.3s ease, stroke 0.3s ease;
+      }
+    }
+  }
+
+  &:hover {
+    border-top-color: white;
+    border-bottom-color: white;
+
+    p {
+      color: white;
+    }
+
+    button {
+      svg {
+        rect {
+          fill: white;
+        }
+        path {
+          stroke: white;
+        }
+      }
+    }
+
+    & + .drop_down_menu {
+      border-top-color: white;
     }
   }
 
@@ -49,23 +89,23 @@
 
 .menu_content {
   background-color: #FFFFFF;
-  height: 0; /* initially set height to 0 */
+  height: 0;
   border-radius: 0 0 30px 30px;
   align-items: center;
-  overflow: hidden; /* hide overflow content */
+  overflow: hidden;
 }
 
 .menu_content.active {
   opacity: 1;
-  animation: slideDown 1s ease forwards; /* apply animation when active */
+  animation: slideDown 1s ease forwards;
 }
 
 @keyframes slideDown {
   from {
-    height: 0; /* start height from 0 */
+    height: 0;
   }
   to {
-    height: 640px; /* end height at 640px */
+    height: 640px;
   }
 }
 
