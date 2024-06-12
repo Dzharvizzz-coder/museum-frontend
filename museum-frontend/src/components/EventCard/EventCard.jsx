@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './EventCard.scss';
-import PushkinCard from '../../assets/images/MainImages/puskinCard.png';
+import PushkinCard from '../../assets/images/MainImages/pushkinCard.png';
 import PeopleWithDisabilitiesImage from '../../assets/images/MainImages/peopleWithDisabilities.png';
 
 export default function EventCard({disabilities , eventId, price, name, date, time, place, cardImage, needPrice, fixedPrice }) {

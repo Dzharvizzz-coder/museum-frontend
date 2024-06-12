@@ -52,24 +52,3 @@
   background-color: #333;
 }
 
-.story-content {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5%;
-  height: 100%;
-
-  img {
-    height: 75%;
-  }
-
-  p {
-    font-family: 'Lato-ExtraLight', sans-serif;
-    text-shadow: none;
-    color: black;
-    font-size: 24px;
-    text-align: left;
-    line-height: 40px;
-  }
-}

@@ -13,20 +13,6 @@
   src: url("../../assets/fonts/Lato-Regular.ttf");
 }
 
-.telegram_link {
-  position: absolute;
-  right: 10%;
-  top: 15%;
-  cursor: pointer;
-}
-
-.vk_link {
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  cursor: pointer;
-}
-
 .content_container_about {
   display: flex;
   width: 100%;
@@ -77,6 +63,11 @@
   align-items: center;
   width: 70%;
   height: 30%;
+
+  img {
+    width: 90%;
+    border-radius: 20px;
+  }
 }
 
 .over-cont:nth-child(even) {
