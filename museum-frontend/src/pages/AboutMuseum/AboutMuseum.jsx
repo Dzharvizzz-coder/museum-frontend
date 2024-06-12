@@ -24,6 +24,39 @@ function AboutMuseum() {
     const [showRecomendations, setShowRecomendations] = useState(true);
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
     let navigate = useNavigate()
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+
+    const handleSubscribe = async () => {
+        if (!email) {
+            setEmailError('Введите E-mail');
+            return;
+        }
+
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            setEmailError('Введите корректный E-mail');
+            return;
+        }
+
+        try {
+            const response = await fetch('http://музеум.рф/api/api/v1/email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            alert('Подписка успешно оформлена');
+            setEmail('');
+        } catch (error) {
+            setEmailError('Ошибка при оформлении подписки');
+        }
+    };
 
 
     const fields = [
@@ -133,9 +166,18 @@ function AboutMuseum() {
                 <div className={"text_footer_cont"}>
                     <p className={"footer_h1"}>Подписка на новости</p>
                     <div className={"input_container"}>
-                        <input className={"footer_input"} placeholder={"Ваш E-mail"}/>
-                        <button className={"button_footer"}>Подписаться</button>
+                        <input
+                            className={"footer_input"}
+                            placeholder={"Ваш E-mail"}
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                                setEmailError('');
+                            }}
+                        />
+                        <button className={"button_footer"} onClick={handleSubscribe}>Подписаться</button>
                     </div>
+                    {emailError && <div className={"email_error"}>{emailError}</div>}
                     <div className={"email_info_container"}>
                         Отправляя заявку, подтверждаю согласие на обработку персональных данных в соответствии с <a href={'https://m-i-e.ru/privacy'} className={'link_for_personality'}>политикой конфиденциальности</a>.
                     </div>
