@@ -50,7 +50,7 @@ function MainPage() {
         const fetchEvents = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('http://музеум.рф/api/api/v1/event/upcoming/?quantity=5');
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/event/all?offset=0&limit=5`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -184,19 +184,19 @@ function MainPage() {
                     <Loader />
                 ) : showRecomendations ? (
                     <>
-                        {events.map((event, i) => (
+                        {Array.isArray(events) && events.map((event, i) => (
                             <EventCard
-                                key={event.event_id}
-                                eventId={event.event_id}
+                                key={event.id}
+                                eventId={event.id}
                                 disabilities={event.disabilities}
-                                price={event.ticket_price && event.ticket_price.length > 0 ? event.ticket_price[0].price : 'Бесплатно'}
+                                price={event.min_price && event.min_price.length > 0 ? event.min_price : 'Бесплатно'}
                                 name={event.name}
                                 date={new Date(event.nearest_date).toLocaleDateString()}
                                 time={new Date(event.nearest_date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                place={event.event_location && event.event_location.length > 0 ? event.event_location[0].area.name : 'Не указано'}
-                                cardImage={event.file && event.file.length > 0 ? event.file[0].s3_path : ''}
-                                needPrice={event.ticket_price && event.ticket_price.length > 0}
-                                fixedPrice={event.ticket_price && event.ticket_price.length > 0 && event.ticket_price[0].price_type === 'fixed'}
+                                place={event.location && event.location.length > 0 ? event.location.name : 'Не указано'}
+                                cardImage={event.image_url && event.image_url.length > 0 ? event.image_url : ''}
+                                needPrice={event.min_price && event.min_price.length > 0}
+                                fixedPrice={event.min_price && event.min_price.length > 0 && event.min_price === 'fixed'}
                             />
                         ))}
                         <LastEventCard />
@@ -208,17 +208,17 @@ function MainPage() {
                         filteredEvents.length > 0 ? (
                             filteredEvents.map((event, i) => (
                                 <EventCard
-                                    key={event.event_id}
-                                    eventId={event.event_id}
-                                    disabilities={event.disabilities}
-                                    price={event.ticket_price && event.ticket_price.length > 0 ? event.ticket_price[0].price : 'Бесплатно'}
-                                    name={event.name}
-                                    date={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleDateString() : 'Не указано'}
-                                    time={event.ticket_date && event.ticket_date.length > 0 ? new Date(event.ticket_date[0].date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Не указано'}
-                                    place={event.event_location && event.event_location.length > 0 ? event.event_location[0].area.name : 'Не указано'}
-                                    cardImage={event.file && event.file.length > 0 ? event.file[0].s3_path : ''}
-                                    needPrice={event.ticket_price && event.ticket_price.length > 0}
-                                    fixedPrice={event.ticket_price && event.ticket_price.length > 0 && event.ticket_price[0].price_type === 'fixed'}
+                                key={i}
+                                eventId={event.id}
+                                disabilities={event.disabilities}
+                                price={event.min_price && event.min_price.length > 0 ? event.min_price : 'Бесплатно'}
+                                name={event.name}
+                                date={new Date(event.nearest_date).toLocaleDateString()}
+                                time={new Date(event.nearest_date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                place={event.location && event.location.length > 0 ? event.location.name : 'Не указано'}
+                                cardImage={event.image_url && event.image_url.length > 0 ? event.image_url : ''}
+                                needPrice={event.min_price && event.min_price.length > 0}
+                                fixedPrice={event.min_price && event.min_price.length > 0 && event.min_price === 'fixed'}
                                 />
                             ))
                         ) : (

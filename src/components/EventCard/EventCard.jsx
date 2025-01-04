@@ -10,8 +10,8 @@ export default function EventCard({disabilities , eventId, price, name, date, ti
             <div className={'image_container'}>
                 <div className={'opacity_effect'} />
                 <img src={PushkinCard} alt={'Пушкинская карта'} className={'pushkin_card'} />
-                {cardImage && <img src={cardImage} alt={'мероприятие'} className={'card_image'} />}
-            </div>
+                {cardImage && <img src={`http://89.169.169.64:8080${cardImage}`} alt={'мероприятие'} className={'card_image'} />}
+                </div>
 
             <div className={'card_info_container'}>
                 {(disabilities &&
