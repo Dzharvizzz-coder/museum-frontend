@@ -7,7 +7,6 @@ export default function UserPlaybill({ onApplyFilters, onCloseMyPlaybill, showOn
     const [selectedEventTypes, setSelectedEventTypes] = useState([]);
 
     const handleButtonClick = () => {
-        setShowFilters(true);
     };
 
     const handleInterestClick = (interest) => {

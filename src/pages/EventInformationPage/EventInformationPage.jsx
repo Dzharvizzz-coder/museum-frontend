@@ -51,7 +51,7 @@ function EventInformationPage() {
     useEffect(() => {
         const fetchEventData = async () => {
             try {
-                const response = await fetch(`http://музеум.рф/api/api/v1/event/${eventId}`);
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/event/${eventId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -100,10 +100,10 @@ function EventInformationPage() {
             </div>
             <div className={'content_container'}>
                 <div className={'photo_and_information_cont'}>
-                    <img src={eventData.file[0].s3_path} className={"photo_and_information_cont__photo"} alt="Event" />
+                    <img src={`http://89.169.169.64:8080${eventData.image_url}`} className={"photo_and_information_cont__photo"} alt="Event" />
                     <div className={'photo_and_information_cont__information'}>
                         <p className={"name_of_event"}>{eventData.name}</p>
-                        <p className={"place_of_event"}>{eventData.event_location[0]?.area?.name || ""}</p>
+                        <p className={"place_of_event"}>{eventData.location.name || ""}</p>
                         {/*<p className={"name_of_event_people"}>Экскурсовод - {eventData.guide}</p>*/}
                         <p className={"name_of_event_information"}>{eventData.description}</p>
                     </div>
@@ -111,7 +111,7 @@ function EventInformationPage() {
 
                 <div className={"large_information_cont"}></div>
 
-                <div className={"ticket_buy_container"}>
+                {/* <div className={"ticket_buy_container"}>
                     <p className={'dates'}>Расписание</p>
                     {eventData.ticket_date.map((date, index) => (
                         <div className={"ticket_buy_container__date"} key={index}>
@@ -127,16 +127,16 @@ function EventInformationPage() {
                             </button>
                         </div>
                     ))}
-                </div>
+                </div> */}
             </div>
-            {showPopUp && (
+            {/* {showPopUp && (
                 <TicketPopUp
                     name={eventData.name}
                     place={eventData.event_location[0]?.area?.name || ""}
                     onClick={handleCloseTickets}
                     ticketPrices={eventData.ticket_price}
                 />
-            )}
+            )} */}
 
             <footer>
 
