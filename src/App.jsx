@@ -4,6 +4,7 @@ import EventPage from "./pages/EventPage/EventPage.jsx";
 import AboutMuseum from "./pages/AboutMuseum/AboutMuseum.jsx";
 import NavigationPage from "./pages/NavigationPage/NavigationPage.jsx";
 import EventInformationPage from "./pages/EventInformationPage/EventInformationPage.jsx";
+import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess.jsx"
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/events/:eventId" element={<EventInformationPage />} />
                 <Route path="/about" element={<AboutMuseum />} />
                 <Route path='/navigation' element={<NavigationPage/>} />
+                <Route path='/payment/success' element={<PaymentSuccess/>} />
             </Routes>
         </BrowserRouter>
     );

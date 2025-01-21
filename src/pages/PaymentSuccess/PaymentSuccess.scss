@@ -1,0 +1,45 @@
+.timer-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.timer {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.timer-countdown {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+}
+
+.timer-page p:last-child {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 20px;
+  color: #f0f8ff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  animation: fade-in 3s ease-in-out infinite alternate;
+}
+
+@keyframes fade-in {
+  from {
+      opacity: 0.7;
+  }
+  to {
+      opacity: 1;
+  }
+}
