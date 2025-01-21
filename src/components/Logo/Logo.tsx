@@ -2,7 +2,7 @@ import "./Logo.scss";
 
 function Logo() {
     return (
-        <div className="logo">
+        <div className="logotip">
             <svg width="170" height="70" viewBox="0 0 170 70" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M63.4209 29.8564C63.4209 25.9974 66.5475 22.8678 70.4007 22.8678C74.2569 22.8678 77.3821 25.9974 77.3821 29.8564C77.3821 33.716 74.2569 36.8455 70.4007 36.8455C66.5475 36.8455 63.4209 33.716 63.4209 29.8564Z" fill="#FCD205" />
   <path d="M20.9389 46.0317V66.9988H0L20.9389 46.0317Z" fill="#1C387E" />
