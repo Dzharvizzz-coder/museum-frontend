@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('../../assets/fonts/Lato-Bold.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Lato-SemiBold';
+    src: url('../../assets/fonts/Lato-SemiBold.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Lato-Regular';
+    src: url('../../assets/fonts/Lato-Regular.ttf');
+  }
+  
+  .admin-page {
+    background-color: #f1f1f1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .admin-header {
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    h1 {
+      font-family: 'Lato-Regular', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: rgba(17, 17, 17, 0.5);
+      margin: 0;
+      text-align: center;
+    }
+  }
+  
+  .auth-container {
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12%;
+  
+    h2 {
+      font-family: 'Lato-Regular', sans-serif;
+      font-size: 36px;
+      color: #111111;
+      margin-bottom: 40px;
+    }
+  
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+        width: 500px;
+  
+        label {
+          font-family: 'Lato-Regular', sans-serif;
+          font-size: 16px;
+          color: #111111;
+          margin-bottom: 5px;
+          display: block;
+        }
+  
+        .auth-input {
+          border: 1px solid #000;
+          border-radius: 10px;
+          width: 100%;
+          height: 40px;
+          padding: 0 10px;
+          font-family: 'Lato-Regular', sans-serif;
+          font-size: 16px;
+        }
+      }
+  
+      .error-message {
+        color: red;
+        font-family: 'Lato-Regular', sans-serif;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+  
+      .auth-button {
+        border-radius: 10px;
+        padding: 10px 35px;
+        width: 139px;
+        height: 49px;
+        background: #1c387e;
+        color: white;
+        font-family: 'Lato-Regular', sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        transition: background 0.3s ease;
+  
+        &:hover {
+          background: #152a5e;
+        }
+      }
+    }
+  }

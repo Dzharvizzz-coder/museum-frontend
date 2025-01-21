@@ -5,6 +5,9 @@ import AboutMuseum from "./pages/AboutMuseum/AboutMuseum.jsx";
 import NavigationPage from "./pages/NavigationPage/NavigationPage.jsx";
 import EventInformationPage from "./pages/EventInformationPage/EventInformationPage.jsx";
 import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess.jsx"
+import AdminPage from './pages/AdminPage/AdminPage.tsx';
+import AdminEventsPage from './pages/AdminEventsPage/AdminEventsPage.jsx';
+import AdminCreateEventsPage from './pages/AdminCreateEventsPage/AdminCreateEventsPage.jsx';
 
 function App() {
     return (
@@ -16,6 +19,9 @@ function App() {
                 <Route path="/about" element={<AboutMuseum />} />
                 <Route path='/navigation' element={<NavigationPage/>} />
                 <Route path='/payment/success' element={<PaymentSuccess/>} />
+                <Route path='/admin' element={<AdminPage/>} />
+                <Route path='/admin/events' element={<AdminEventsPage/>} />
+                <Route path='/admin/create/event' element={<AdminCreateEventsPage/>} />
             </Routes>
         </BrowserRouter>
     );
