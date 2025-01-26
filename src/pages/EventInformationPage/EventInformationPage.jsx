@@ -100,7 +100,7 @@ function EventInformationPage() {
             </div>
             <div className={'content_container'}>
                 <div className={'photo_and_information_cont'}>
-                    <img src={`http://89.169.169.64:8080${eventData.image_url}`} className={"photo_and_information_cont__photo"} alt="Event" />
+                    <img src={`https://музеум.рф${eventData.image_url}`} className={"photo_and_information_cont__photo"} alt="Event" />
                     <div className={'photo_and_information_cont__information'}>
                         <p className={"name_of_event"}>{eventData.name}</p>
                         <p className={"place_of_event"}>{eventData.location.name || ""}</p>
